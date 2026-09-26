@@ -1,34 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const trainers = [
-  {
-    name: 'Amit Sharma',
-    role: 'Head Trainer',
-    image: 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=687&auto=format&fit=crop',
-  },
-  {
-    name: 'Priya Patel',
-    role: 'Yoga & Pilates',
-    image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1470&auto=format&fit=crop',
-  },
-  {
-    name: 'Rahul Verma',
-    role: 'CrossFit Expert',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop',
-  },
-];
+import { trainers } from '../data/mockData';
 
 const Trainers = () => {
   return (
-    <section id="trainers" className="py-20 bg-white dark:bg-slate-950 transition-colors">
+    <section id="trainers" className="py-24 bg-zinc-950 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl font-heading">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-sm text-primary-500 font-bold tracking-widest uppercase mb-3">Our Elite Team</h2>
+          <h2 className="text-4xl font-extrabold text-white sm:text-5xl font-heading tracking-tight">
             Meet Our Experts
           </h2>
-          <p className="mt-4 max-w-2xl text-xl text-slate-500 dark:text-slate-400 mx-auto">
-            Train with the best. Our certified professionals are here to guide you.
+          <p className="mt-6 text-xl text-zinc-400 leading-relaxed">
+            Train with the best. Our certified professionals are here to guide you every step of the way.
           </p>
         </div>
 
@@ -41,18 +25,28 @@ const Trainers = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
             >
-              <div className="aspect-w-3 aspect-h-4">
+              <div className="aspect-w-3 aspect-h-4 overflow-hidden rounded-3xl">
                 <img
                   src={trainer.image}
                   alt={trainer.name}
-                  className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-[450px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6">
-                <h3 className="text-2xl font-bold text-white mb-1">{trainer.name}</h3>
-                <p className="text-primary-400 font-medium">{trainer.role}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent rounded-3xl opacity-90 transition-opacity duration-300" />
+              
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <div className="transform transition-transform duration-500 group-hover:-translate-y-4">
+                  <h3 className="text-3xl font-bold text-white mb-2 font-heading">{trainer.name}</h3>
+                  <p className="text-primary-400 font-medium text-lg">{trainer.role}</p>
+                </div>
+                
+                <div className="absolute bottom-6 left-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                  <button className="w-full py-3 bg-white text-black font-semibold rounded-xl hover:bg-primary-500 hover:text-white transition-colors">
+                    Book Session
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}

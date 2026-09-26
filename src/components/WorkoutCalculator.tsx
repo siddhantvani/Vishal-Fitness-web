@@ -26,62 +26,65 @@ const WorkoutCalculator = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-slate-700">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-primary-50 dark:bg-primary-900/20 text-primary-500 rounded-xl">
-          <Activity className="w-6 h-6" />
+    <div className="bg-white dark:bg-zinc-900 rounded-3xl p-10 shadow-2xl border border-zinc-200 dark:border-white/5 transition-all hover:border-primary-500/20">
+      <div className="flex items-center gap-4 mb-8">
+        <div className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl">
+          <Activity className="w-8 h-8" />
         </div>
-        <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">Calorie Calculator</h3>
+        <div>
+          <h3 className="text-2xl font-bold font-heading text-zinc-900 dark:text-white mb-1">Calorie Calculator</h3>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">Calculate your daily calorie needs</p>
+        </div>
       </div>
       
-      <form onSubmit={calculateTDEE} className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
+      <form onSubmit={calculateTDEE} className="space-y-6">
+        <div className="grid grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Age</label>
-            <input type="number" value={age} onChange={(e) => setAge(e.target.value)} required className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white outline-none" placeholder="25" />
+            <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">Age</label>
+            <input type="number" value={age} onChange={(e) => setAge(e.target.value)} required className="w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-white/10 bg-zinc-50 dark:bg-black/50 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600" placeholder="25" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Gender</label>
-            <select value={gender} onChange={(e) => setGender(e.target.value)} className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white outline-none">
+            <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">Gender</label>
+            <select value={gender} onChange={(e) => setGender(e.target.value)} className="w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-white/10 bg-zinc-50 dark:bg-black/50 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all">
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Weight (kg)</label>
-            <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} required className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white outline-none" placeholder="70" />
+            <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">Weight (kg)</label>
+            <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} required className="w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-white/10 bg-zinc-50 dark:bg-black/50 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600" placeholder="70" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Height (cm)</label>
-            <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} required className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white outline-none" placeholder="175" />
+            <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">Height (cm)</label>
+            <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} required className="w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-white/10 bg-zinc-50 dark:bg-black/50 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600" placeholder="175" />
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Activity Level</label>
-          <select value={activity} onChange={(e) => setActivity(e.target.value)} className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white outline-none">
+          <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">Activity Level</label>
+          <select value={activity} onChange={(e) => setActivity(e.target.value)} className="w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-white/10 bg-zinc-50 dark:bg-black/50 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none transition-all">
             <option value="1.2">Sedentary (Little/No Exercise)</option>
-            <option value="1.375">Lightly Active (Exercise 1-3 days/week)</option>
-            <option value="1.55">Moderately Active (Exercise 3-5 days/week)</option>
-            <option value="1.725">Very Active (Exercise 6-7 days/week)</option>
+            <option value="1.375">Lightly Active (1-3 days/week)</option>
+            <option value="1.55">Moderately Active (3-5 days/week)</option>
+            <option value="1.725">Very Active (6-7 days/week)</option>
           </select>
         </div>
-        <button type="submit" className="w-full py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-semibold transition-colors mt-2">
+        <button type="submit" className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-bold transition-all shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40">
           Calculate Calories
         </button>
       </form>
 
       {tdee !== null && (
-        <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg text-center animate-fade-in">
-          <p className="text-sm text-slate-500 dark:text-slate-400">Daily Maintenance Calories</p>
-          <p className="text-4xl font-bold text-primary-500 font-heading my-2">{tdee} kcal</p>
-          <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+        <div className="mt-8 p-6 bg-primary-500/10 dark:bg-primary-500/5 border border-primary-500/20 rounded-2xl text-center animate-fade-in">
+          <p className="text-sm font-semibold text-primary-600 dark:text-primary-400 mb-2 uppercase tracking-wide">Daily Maintenance Calories</p>
+          <p className="text-5xl font-extrabold text-zinc-900 dark:text-white font-heading mb-4">{tdee} <span className="text-2xl text-zinc-500 font-normal">kcal</span></p>
+          <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-primary-500/20">
             <div>
-              <p className="text-sm text-slate-500">For Fat Loss</p>
-              <p className="font-semibold text-slate-900 dark:text-white">{tdee - 500} kcal</p>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">For Fat Loss</p>
+              <p className="font-bold text-lg text-zinc-900 dark:text-white">{tdee - 500} kcal</p>
             </div>
             <div>
-              <p className="text-sm text-slate-500">For Muscle Gain</p>
-              <p className="font-semibold text-slate-900 dark:text-white">{tdee + 300} kcal</p>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">For Muscle Gain</p>
+              <p className="font-bold text-lg text-zinc-900 dark:text-white">{tdee + 300} kcal</p>
             </div>
           </div>
         </div>

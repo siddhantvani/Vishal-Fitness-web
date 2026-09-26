@@ -1,53 +1,43 @@
 import { CalendarDays, MapPin } from 'lucide-react';
-
-const events = [
-  {
-    title: "Sunday Morning Marathon",
-    date: "Oct 15, 2026",
-    time: "06:00 AM",
-    location: "Bhopal Lake View",
-    image: "https://images.unsplash.com/photo-1552674605-15cff24c00e8?q=80&w=1470&auto=format&fit=crop",
-    description: "Join us for a 10K community run. Open for all fitness levels!"
-  },
-  {
-    title: "Powerlifting Workshop",
-    date: "Nov 02, 2026",
-    time: "04:00 PM",
-    location: "Chhatrasal Branch",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop",
-    description: "Learn proper deadlift and squat techniques from our head trainer."
-  },
-];
+import { events } from '../data/mockData';
 
 const Events = () => {
   return (
-    <section id="events" className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors">
+    <section id="events" className="py-24 bg-zinc-950 transition-colors border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl font-heading">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-sm text-primary-500 font-bold tracking-widest uppercase mb-3">Community</h2>
+          <h2 className="text-4xl font-extrabold text-white sm:text-5xl font-heading tracking-tight">
             Upcoming Events
           </h2>
-          <p className="mt-4 text-xl text-slate-500 dark:text-slate-400">
-            Join the Vishal Fitness community outside the gym.
+          <p className="mt-6 text-xl text-zinc-400 leading-relaxed">
+            Join the Vishal Fitness community outside the gym. Participate in workshops, runs, and exclusive gatherings.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {events.map((event, index) => (
-            <div key={index} className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row hover:shadow-lg transition-shadow">
-              <img src={event.image} alt={event.title} className="w-full sm:w-48 h-48 sm:h-auto object-cover" />
-              <div className="p-6 flex flex-col justify-between">
+            <div key={index} className="group bg-zinc-900 rounded-3xl overflow-hidden shadow-xl border border-white/5 flex flex-col sm:flex-row hover:border-primary-500/30 transition-all duration-500">
+              <div className="sm:w-2/5 relative overflow-hidden">
+                <img src={event.image} alt={event.title} className="w-full h-56 sm:h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+              </div>
+              <div className="p-8 flex flex-col justify-between sm:w-3/5">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{event.title}</h3>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">{event.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3 font-heading group-hover:text-primary-400 transition-colors">{event.title}</h3>
+                  <p className="text-zinc-400 text-sm mb-6 leading-relaxed">{event.description}</p>
                 </div>
-                <div className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <CalendarDays className="w-4 h-4 text-primary-500" />
+                <div className="space-y-3 text-sm text-zinc-300 font-medium">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-primary-500 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                      <CalendarDays className="w-4 h-4" />
+                    </div>
                     <span>{event.date} • {event.time}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-primary-500" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-primary-500 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                      <MapPin className="w-4 h-4" />
+                    </div>
                     <span>{event.location}</span>
                   </div>
                 </div>

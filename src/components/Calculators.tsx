@@ -3,14 +3,14 @@ import WorkoutCalculator from './WorkoutCalculator';
 
 const Calculators = () => {
   return (
-    <section id="calculators" className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors">
+    <section id="calculators" className="py-24 bg-zinc-950 transition-colors border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-base text-primary-500 font-semibold tracking-wide uppercase">Tools</h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl font-heading">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-sm text-primary-500 font-bold tracking-widest uppercase mb-3">Tools</h2>
+          <h2 className="text-4xl font-extrabold text-white sm:text-5xl font-heading tracking-tight">
             Fitness Calculators
-          </p>
-          <p className="mt-4 text-xl text-slate-500 dark:text-slate-400">
+          </h2>
+          <p className="mt-6 text-xl text-zinc-400 leading-relaxed">
             Understand your body and plan your goals scientifically.
           </p>
         </div>

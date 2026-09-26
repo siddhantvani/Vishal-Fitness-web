@@ -12,8 +12,8 @@ const WhatsAppButton = () => {
       className="fixed bottom-6 right-6 z-50 p-4 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl shadow-green-500/30 transition-transform transform hover:-translate-y-1 hover:scale-110 flex items-center justify-center group"
       aria-label="Chat on WhatsApp"
     >
-      <MessageCircle className="w-8 h-8" />
-      <span className="absolute right-full mr-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg whitespace-nowrap">
+      <MessageCircle className="w-7 h-7" />
+      <span className="absolute right-full mr-4 bg-zinc-900 text-white border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-2xl whitespace-nowrap">
         Chat with us!
       </span>
     </a>

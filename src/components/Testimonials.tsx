@@ -1,31 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
-
-const testimonials = [
-  {
-    content: "Vishal Fitness completely changed my approach to health. The transformation program is intense but the results are incredible.",
-    author: "Sneha R.",
-    role: "Member for 2 years",
-  },
-  {
-    content: "The best gym in Bhopal, hands down. The trainers are knowledgeable, the equipment is top-notch, and the community is super supportive.",
-    author: "Vikram S.",
-    role: "CrossFit Enthusiast",
-  },
-  {
-    content: "I love the group classes! They keep me motivated and I've met so many great friends here. The facilities are always spotlessly clean.",
-    author: "Anjali M.",
-    role: "Yoga Practitioner",
-  }
-];
+import { testimonials } from '../data/mockData';
 
 const Testimonials = () => {
   return (
-    <section className="py-20 bg-white dark:bg-slate-950 transition-colors">
+    <section className="py-24 bg-zinc-50 dark:bg-black transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl font-heading">
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <h2 className="text-sm text-primary-500 font-bold tracking-widest uppercase mb-3">Success Stories</h2>
+          <h2 className="text-4xl font-extrabold text-zinc-900 dark:text-white sm:text-5xl font-heading tracking-tight">
             What Our Members Say
           </h2>
         </div>
@@ -38,17 +22,25 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl relative"
+              className="bg-white dark:bg-zinc-900 p-10 rounded-3xl relative shadow-xl border border-zinc-200 dark:border-white/5 flex flex-col"
             >
-              <div className="flex text-primary-500 mb-4">
+              <div className="absolute top-8 right-10 text-primary-500/10 dark:text-primary-500/5 font-heading text-8xl leading-none" aria-hidden="true">
+                "
+              </div>
+              <div className="flex gap-1 text-primary-500 mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
-              <p className="text-slate-600 dark:text-slate-300 italic mb-6">"{testimonial.content}"</p>
-              <div>
-                <p className="font-bold text-slate-900 dark:text-white">{testimonial.author}</p>
-                <p className="text-sm text-slate-500">{testimonial.role}</p>
+              <p className="text-zinc-600 dark:text-zinc-300 text-lg italic mb-10 flex-grow relative z-10 leading-relaxed">"{testimonial.content}"</p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary-500/20 rounded-full flex items-center justify-center text-primary-500 font-bold text-xl">
+                  {testimonial.author.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-bold text-zinc-900 dark:text-white text-lg">{testimonial.author}</p>
+                  <p className="text-sm text-zinc-500">{testimonial.role}</p>
+                </div>
               </div>
             </motion.div>
           ))}
