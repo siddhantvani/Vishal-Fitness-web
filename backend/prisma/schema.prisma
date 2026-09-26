@@ -1,0 +1,186 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Enums as Strings for SQLite
+// Role: MEMBER, TRAINER, ADMIN
+// BookingStatus: PENDING, CONFIRMED, CANCELLED, COMPLETED
+
+model User {
+  id             String    @id @default(uuid())
+  email          String    @unique
+  passwordHash   String
+  role           String    @default("MEMBER")
+  firstName      String
+  lastName       String
+  phone          String?
+  profileImage   String?
+  bio            String?
+  specialization String?
+  experience     Int?
+  availability   String?
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  // Relationships
+  bookings        Booking[]
+  workouts        Workout[] @relation("MemberWorkouts")
+  trainerWorkouts Workout[] @relation("TrainerWorkouts")
+  progress        Progress[]
+  schedules       Schedule[] @relation("TrainerSchedules")
+  classes         Class[]    @relation("DefaultTrainer")
+  attendance      Attendance[]
+}
+
+model Class {
+  id               String     @id @default(uuid())
+  name             String
+  description      String
+  type             String
+  capacity         Int
+  duration         Int        // in minutes
+  isActive         Boolean    @default(true)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  defaultTrainerId String?
+  defaultTrainer   User?      @relation("DefaultTrainer", fields: [defaultTrainerId], references: [id])
+  schedules        Schedule[]
+}
+
+model Schedule {
+  id          String     @id @default(uuid())
+  classId     String
+  class       Class      @relation(fields: [classId], references: [id])
+  trainerId   String
+  trainer     User       @relation("TrainerSchedules", fields: [trainerId], references: [id])
+  date           DateTime
+  day            String
+  startTime      DateTime
+  endTime        DateTime
+  availableSlots Int        @default(0)
+  status         String     @default("ACTIVE")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  bookings       Booking[]
+  attendance     Attendance[]
+}
+
+model Booking {
+  id         String        @id @default(uuid())
+  scheduleId String
+  schedule   Schedule      @relation(fields: [scheduleId], references: [id])
+  memberId   String
+  member     User          @relation(fields: [memberId], references: [id])
+  status     String        @default("PENDING")
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  attendance Attendance?
+}
+
+model Workout {
+  id           String            @id @default(uuid())
+  title        String
+  description  String?
+  goal         String?
+  duration     Int?              // in minutes
+  difficulty   String            @default("BEGINNER") // BEGINNER, INTERMEDIATE, ADVANCED
+  status       String            @default("ACTIVE")   // ACTIVE, COMPLETED, ARCHIVED
+  memberId     String
+  member       User              @relation("MemberWorkouts", fields: [memberId], references: [id])
+  trainerId    String
+  trainer      User              @relation("TrainerWorkouts", fields: [trainerId], references: [id])
+  exercises    WorkoutExercise[]
+  assignedDate DateTime          @default(now())
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+}
+
+model WorkoutExercise {
+  id           String   @id @default(uuid())
+  workoutId    String
+  workout      Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  name         String
+  description  String?
+  sets         Int      @default(0)
+  repetitions  Int      @default(0)
+  duration     Int?     // in seconds
+  restTime     Int?     // in seconds
+  order        Int      @default(0)
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Progress {
+  id                String   @id @default(uuid())
+  memberId          String
+  member            User     @relation(fields: [memberId], references: [id])
+  weight            Float
+  height            Float
+  bodyFatPercentage Float?
+  chest             Float?
+  waist             Float?
+  hips              Float?
+  arms              Float?
+  thighs            Float?
+  notes             String?
+  recordedAt        DateTime @default(now())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Attendance {
+  id           String    @id @default(uuid())
+  memberId     String
+  member       User      @relation(fields: [memberId], references: [id])
+  bookingId    String    @unique
+  booking      Booking   @relation(fields: [bookingId], references: [id])
+  scheduleId   String
+  schedule     Schedule  @relation(fields: [scheduleId], references: [id])
+  status       String    // PRESENT, ABSENT, LATE
+  checkInTime  DateTime
+  checkOutTime DateTime?
+  notes        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Location {
+  id          String   @id @default(uuid())
+  branchName  String
+  address     String
+  contactInfo String
+  openingHours String
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  date        DateTime
+  location    String
+  image       String?
+}
+
+model Testimonial {
+  id         String   @id @default(uuid())
+  memberName String
+  review     String
+  rating     Int
+  image      String?
+}
+
+model Transformation {
+  id          String   @id @default(uuid())
+  beforeImage String
+  afterImage  String
+  goal        String
+  duration    String
+  description String
+}
