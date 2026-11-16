@@ -131,13 +131,13 @@ const BookingsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Bookings Management</h1>
-          <p className="text-gray-400 mt-1">View, search, and manage member class reservations.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">Bookings Management</h1>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-1">View, search, and manage member class reservations.</p>
         </div>
       </div>
 
       {/* Filters Toolbar */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search size={18} className="text-gray-500" />
@@ -147,7 +147,7 @@ const BookingsPage = () => {
             placeholder="Search member, class, or trainer..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="block w-full pl-10 pr-3 py-2 border border-gray-700 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            className="block w-full pl-10 pr-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
           />
         </div>
         
@@ -159,7 +159,7 @@ const BookingsPage = () => {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="block w-full pl-10 pr-8 py-2 border border-gray-700 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm appearance-none"
+              className="block w-full pl-10 pr-8 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm appearance-none"
             >
               <option value="">All Statuses</option>
               <option value="PENDING">Pending</option>
@@ -172,10 +172,10 @@ const BookingsPage = () => {
       </div>
 
       {/* Data Table */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-800">
-            <thead className="bg-gray-950">
+          <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
+            <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Member</th>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Class</th>
@@ -185,12 +185,12 @@ const BookingsPage = () => {
                 <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-gray-800">
+            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
                     <p className="mt-4 text-gray-400 text-sm">Loading bookings...</p>
                   </td>
@@ -199,8 +199,8 @@ const BookingsPage = () => {
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex flex-col items-center justify-center">
-                      <AlertCircle className="text-red-500 w-10 h-10 mb-4" />
-                      <p className="text-red-500 text-sm">{error}</p>
+                      <AlertCircle className="text-primary-500 w-10 h-10 mb-4" />
+                      <p className="text-primary-500 text-sm">{error}</p>
                       <button onClick={fetchBookings} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
                     </div>
                   </td>
@@ -214,16 +214,16 @@ const BookingsPage = () => {
                 </tr>
               ) : (
                 filteredBookings.map((booking) => (
-                  <tr key={booking.id} className="hover:bg-gray-800/50 transition-colors">
+                  <tr key={booking.id} className="hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0">
-                          <div className="h-10 w-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-300 font-bold uppercase">
+                          <div className="h-10 w-10 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-gray-300 font-bold uppercase">
                             {booking.member.firstName[0]}{booking.member.lastName[0]}
                           </div>
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-white">{booking.member.firstName} {booking.member.lastName}</div>
+                          <div className="text-sm font-medium text-zinc-900 dark:text-white">{booking.member.firstName} {booking.member.lastName}</div>
                           <div className="text-sm text-gray-500">{booking.member.email}</div>
                         </div>
                       </div>
@@ -279,7 +279,7 @@ const BookingsPage = () => {
                 {selectedBooking.status !== 'CANCELLED' && (
                   <button 
                     onClick={() => handleStatusChangeRequest(selectedBooking.id, 'CANCELLED')}
-                    className="text-xs font-semibold px-3 py-1.5 bg-red-500/10 text-red-500 hover:bg-red-500/20 rounded-md transition-colors border border-red-500/20"
+                    className="text-xs font-semibold px-3 py-1.5 bg-red-500/10 text-primary-500 hover:bg-red-500/20 rounded-md transition-colors border border-primary-500/20"
                   >
                     Cancel Booking
                   </button>
@@ -295,9 +295,9 @@ const BookingsPage = () => {
               </div>
             </div>
             
-            <div className="bg-gray-950 border border-gray-800 p-5 rounded-xl space-y-5">
+            <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-5 rounded-xl space-y-5">
               <div>
-                <h3 className="text-lg font-bold text-white mb-4 border-b border-gray-800 pb-2">Member Information</h3>
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">Member Information</h3>
                 <div className="space-y-3">
                   <div>
                     <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</label>
@@ -315,7 +315,7 @@ const BookingsPage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-white mb-4 border-b border-gray-800 pb-2 mt-2">Class Information</h3>
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2 mt-2">Class Information</h3>
                 <div className="space-y-3">
                   <div>
                     <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Class Name</label>
@@ -342,7 +342,7 @@ const BookingsPage = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-white mb-4 border-b border-gray-800 pb-2 mt-2">Booking Records</h3>
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2 mt-2">Booking Records</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Booked On</label>

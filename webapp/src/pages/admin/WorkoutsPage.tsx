@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, Search, Eye, Edit2, Plus, Trash2, CheckCircle, Archive, Dumbbell, Save } from 'lucide-react';
+import { Activity, Search, Eye, Edit2, Plus, Trash2, CheckCircle, Dumbbell, Save } from 'lucide-react';
 import { api } from '../../api/api';
 import StatusBadge from '../../components/admin/StatusBadge';
 import SlideOver from '../../components/admin/SlideOver';
@@ -291,19 +291,19 @@ const WorkoutsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Workouts Management</h1>
-          <p className="text-gray-400 mt-1">View, search, and manage member workout plans.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">Workouts Management</h1>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-1">View, search, and manage member workout plans.</p>
         </div>
         <button 
           onClick={handleOpenAdd}
-          className="flex items-center justify-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md font-medium transition-colors"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-md font-medium transition-colors"
         >
           <Plus size={18} /> Add Workout
         </button>
       </div>
 
       {/* Filters Toolbar */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search size={18} className="text-gray-500" />
@@ -313,7 +313,7 @@ const WorkoutsPage = () => {
             placeholder="Search by title, member, or trainer..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="block w-full pl-10 pr-3 py-2 border border-gray-700 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            className="block w-full pl-10 pr-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
           />
         </div>
         
@@ -321,7 +321,7 @@ const WorkoutsPage = () => {
           <select
             value={difficultyFilter}
             onChange={(e) => setDifficultyFilter(e.target.value)}
-            className="block w-full px-3 py-2 border border-gray-700 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm appearance-none sm:min-w-[150px]"
+            className="block w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm appearance-none sm:min-w-[150px]"
           >
             <option value="">All Difficulties</option>
             <option value="BEGINNER">Beginner</option>
@@ -331,7 +331,7 @@ const WorkoutsPage = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="block w-full px-3 py-2 border border-gray-700 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm appearance-none sm:min-w-[150px]"
+            className="block w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm appearance-none sm:min-w-[150px]"
           >
             <option value="">All Statuses</option>
             <option value="ACTIVE">Active</option>
@@ -342,10 +342,10 @@ const WorkoutsPage = () => {
       </div>
 
       {/* Data Table */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-800">
-            <thead className="bg-gray-950">
+          <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
+            <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Plan & Difficulty</th>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Member</th>
@@ -355,12 +355,12 @@ const WorkoutsPage = () => {
                 <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-gray-800">
+            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
                     <p className="mt-4 text-gray-400 text-sm">Loading workouts...</p>
                   </td>
@@ -368,7 +368,7 @@ const WorkoutsPage = () => {
               ) : error ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
-                    <p className="text-red-500 text-sm">{error}</p>
+                    <p className="text-primary-500 text-sm">{error}</p>
                     <button onClick={fetchData} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
@@ -381,16 +381,16 @@ const WorkoutsPage = () => {
                 </tr>
               ) : (
                 workouts.map((w) => (
-                  <tr key={w.id} className="hover:bg-gray-800/50 transition-colors">
+                  <tr key={w.id} className="hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0">
-                          <div className="h-10 w-10 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-red-500 font-bold uppercase">
+                          <div className="h-10 w-10 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-primary-500 font-bold uppercase">
                             <Dumbbell size={20} />
                           </div>
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-white">{w.title}</div>
+                          <div className="text-sm font-medium text-zinc-900 dark:text-white">{w.title}</div>
                           <div className="text-sm text-gray-400">{w.difficulty}</div>
                         </div>
                       </div>
@@ -441,7 +441,7 @@ const WorkoutsPage = () => {
                             setWorkoutToModify({ id: w.id, action: 'DELETE' });
                             setIsConfirmModalOpen(true);
                           }}
-                          className="text-red-500/70 hover:text-red-500 transition-colors"
+                          className="text-primary-500/70 hover:text-primary-500 transition-colors"
                           title="Delete Workout"
                         >
                           <Trash2 size={16} />
@@ -469,13 +469,13 @@ const WorkoutsPage = () => {
                 <StatusBadge status={selectedWorkout.status} />
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-red-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Workout
                 </button>
               </div>
               
-              <div className="bg-gray-950 border border-gray-800 p-4 rounded-lg space-y-4">
+              <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Plan Name</label>
@@ -506,12 +506,12 @@ const WorkoutsPage = () => {
 
               <div>
                 <h4 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
-                  <Dumbbell size={18} className="text-red-500"/> Exercises
+                  <Dumbbell size={18} className="text-primary-500"/> Exercises
                 </h4>
                 {selectedWorkout.exercises && selectedWorkout.exercises.length > 0 ? (
                   <div className="space-y-3">
                     {selectedWorkout.exercises.map((ex, idx) => (
-                      <div key={ex.id || idx} className="bg-gray-900 border border-gray-800 p-3 rounded-lg">
+                      <div key={ex.id || idx} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg">
                         <div className="flex justify-between items-start">
                           <h5 className="font-medium text-white">{ex.order}. {ex.name}</h5>
                           <span className="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">
@@ -530,13 +530,13 @@ const WorkoutsPage = () => {
           ) : (
             <form onSubmit={handleSave} className="space-y-6">
               {formError && (
-                <div className="p-3 bg-red-500/10 border border-red-500/50 rounded-md">
-                  <p className="text-sm text-red-500">{formError}</p>
+                <div className="p-3 bg-red-500/10 border border-primary-500/50 rounded-md">
+                  <p className="text-sm text-primary-500">{formError}</p>
                 </div>
               )}
               
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white border-b border-gray-800 pb-2">Plan Details</h4>
+                <h4 className="text-lg font-semibold text-white border-b border-zinc-200 dark:border-zinc-800 pb-2">Plan Details</h4>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-400 mb-1">Plan Title *</label>
@@ -545,7 +545,7 @@ const WorkoutsPage = () => {
                     required
                     value={form.title}
                     onChange={e => setForm({...form, title: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                     placeholder="e.g. 4-Week Hypertrophy"
                   />
                 </div>
@@ -557,7 +557,7 @@ const WorkoutsPage = () => {
                       required
                       value={form.memberId}
                       onChange={e => setForm({...form, memberId: e.target.value})}
-                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                     >
                       <option value="" disabled>Select a member</option>
                       {members.map(m => (
@@ -579,7 +579,7 @@ const WorkoutsPage = () => {
                     <select 
                       value={form.difficulty}
                       onChange={e => setForm({...form, difficulty: e.target.value as any})}
-                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                     >
                       <option value="BEGINNER">Beginner</option>
                       <option value="INTERMEDIATE">Intermediate</option>
@@ -591,7 +591,7 @@ const WorkoutsPage = () => {
                     <select 
                       value={form.status}
                       onChange={e => setForm({...form, status: e.target.value as any})}
-                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                     >
                       <option value="ACTIVE">Active</option>
                       <option value="COMPLETED">Completed</option>
@@ -606,7 +606,7 @@ const WorkoutsPage = () => {
                     type="text" 
                     value={form.goal}
                     onChange={e => setForm({...form, goal: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
 
@@ -616,37 +616,37 @@ const WorkoutsPage = () => {
                     rows={3}
                     value={form.description}
                     onChange={e => setForm({...form, description: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
               </div>
 
               <div className="space-y-4 pt-4">
-                <div className="flex items-center justify-between border-b border-gray-800 pb-2">
+                <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
                   <h4 className="text-lg font-semibold text-white flex items-center gap-2">
-                    <Dumbbell size={18} className="text-red-500"/> Exercises
+                    <Dumbbell size={18} className="text-primary-500"/> Exercises
                   </h4>
                   <button
                     type="button"
                     onClick={handleAddExerciseRow}
-                    className="text-sm flex items-center gap-1 text-red-500 hover:text-red-400 transition-colors"
+                    className="text-sm flex items-center gap-1 text-primary-500 hover:text-red-400 transition-colors"
                   >
                     <Plus size={16} /> Add Exercise
                   </button>
                 </div>
 
                 {exercises.length === 0 ? (
-                  <p className="text-gray-500 text-sm italic text-center py-4 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-gray-500 text-sm italic text-center py-4 bg-gray-900 rounded-lg border border-zinc-200 dark:border-zinc-800">
                     No exercises added yet. Click "Add Exercise" to start building the plan.
                   </p>
                 ) : (
                   <div className="space-y-4">
                     {exercises.map((ex, idx) => (
-                      <div key={ex.id || idx} className="bg-gray-900 border border-gray-700 rounded-lg p-4 space-y-3 relative">
+                      <div key={ex.id || idx} className="bg-white dark:bg-zinc-900 border border-gray-700 rounded-lg p-4 space-y-3 relative">
                         <button
                           type="button"
                           onClick={() => handleRemoveExerciseRow(idx, ex.id)}
-                          className="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition-colors"
+                          className="absolute top-4 right-4 text-gray-500 hover:text-primary-500 transition-colors"
                           title="Remove Exercise"
                         >
                           <Trash2 size={16} />
@@ -659,7 +659,7 @@ const WorkoutsPage = () => {
                             required
                             value={ex.name}
                             onChange={e => updateExercise(idx, 'name', e.target.value)}
-                            className="w-full px-2 py-1.5 bg-gray-800 border border-gray-700 rounded text-sm text-white focus:ring-red-500 focus:border-red-500"
+                            className="w-full px-2 py-1.5 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded text-sm text-white focus:ring-primary-500 focus:border-primary-500"
                             placeholder="e.g. Barbell Squat"
                           />
                         </div>
@@ -672,7 +672,7 @@ const WorkoutsPage = () => {
                               min="0"
                               value={ex.sets}
                               onChange={e => updateExercise(idx, 'sets', e.target.value)}
-                              className="w-full px-2 py-1.5 bg-gray-800 border border-gray-700 rounded text-sm text-white focus:ring-red-500 focus:border-red-500"
+                              className="w-full px-2 py-1.5 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded text-sm text-white focus:ring-primary-500 focus:border-primary-500"
                             />
                           </div>
                           <div>
@@ -682,7 +682,7 @@ const WorkoutsPage = () => {
                               min="0"
                               value={ex.repetitions}
                               onChange={e => updateExercise(idx, 'repetitions', e.target.value)}
-                              className="w-full px-2 py-1.5 bg-gray-800 border border-gray-700 rounded text-sm text-white focus:ring-red-500 focus:border-red-500"
+                              className="w-full px-2 py-1.5 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded text-sm text-white focus:ring-primary-500 focus:border-primary-500"
                             />
                           </div>
                         </div>
@@ -693,7 +693,7 @@ const WorkoutsPage = () => {
                             type="text" 
                             value={ex.notes || ''}
                             onChange={e => updateExercise(idx, 'notes', e.target.value)}
-                            className="w-full px-2 py-1.5 bg-gray-800 border border-gray-700 rounded text-sm text-white focus:ring-red-500 focus:border-red-500"
+                            className="w-full px-2 py-1.5 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded text-sm text-white focus:ring-primary-500 focus:border-primary-500"
                             placeholder="e.g. Keep back straight"
                           />
                         </div>
@@ -714,14 +714,14 @@ const WorkoutsPage = () => {
                     }
                     setFormError(null);
                   }}
-                  className="flex-1 py-2.5 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2.5 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="flex-1 py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-red-500 disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="flex-1 py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-zinc-900 dark:text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500 disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   <Save size={16} />
                   {isSaving ? 'Saving...' : slideOverMode === 'ADD' ? 'Create Workout' : 'Save Changes'}

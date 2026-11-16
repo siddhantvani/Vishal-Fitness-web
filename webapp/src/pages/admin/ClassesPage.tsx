@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CalendarDays, Search, Filter, Eye, Edit2, Play, Square, Plus } from 'lucide-react';
+import { CalendarDays, Search, Eye, Edit2, Play, Square, Plus } from 'lucide-react';
 import { api } from '../../api/api';
 import StatusBadge from '../../components/admin/StatusBadge';
 import SlideOver from '../../components/admin/SlideOver';
@@ -189,19 +189,19 @@ const ClassesPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Classes Management</h1>
-          <p className="text-gray-400 mt-1">View, search, and manage fitness classes.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">Classes Management</h1>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-1">View, search, and manage fitness classes.</p>
         </div>
         <button 
           onClick={handleOpenAdd}
-          className="flex items-center justify-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md font-medium transition-colors"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-md font-medium transition-colors"
         >
           <Plus size={18} /> Add Class
         </button>
       </div>
 
       {/* Filters Toolbar */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search size={18} className="text-gray-500" />
@@ -211,7 +211,7 @@ const ClassesPage = () => {
             placeholder="Search classes by name or description..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="block w-full pl-10 pr-3 py-2 border border-gray-700 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            className="block w-full pl-10 pr-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
           />
         </div>
         
@@ -219,7 +219,7 @@ const ClassesPage = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="block w-full px-3 py-2 border border-gray-700 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm appearance-none min-w-[150px]"
+            className="block w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm appearance-none min-w-[150px]"
           >
             <option value="">All Statuses</option>
             <option value="true">Active</option>
@@ -229,10 +229,10 @@ const ClassesPage = () => {
       </div>
 
       {/* Data Table */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-800">
-            <thead className="bg-gray-950">
+          <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
+            <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Class</th>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Trainer</th>
@@ -242,12 +242,12 @@ const ClassesPage = () => {
                 <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-gray-800">
+            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
                     <p className="mt-4 text-gray-400 text-sm">Loading classes...</p>
                   </td>
@@ -255,7 +255,7 @@ const ClassesPage = () => {
               ) : error ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
-                    <p className="text-red-500 text-sm">{error}</p>
+                    <p className="text-primary-500 text-sm">{error}</p>
                     <button onClick={fetchData} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
@@ -268,16 +268,16 @@ const ClassesPage = () => {
                 </tr>
               ) : (
                 classes.map((c) => (
-                  <tr key={c.id} className="hover:bg-gray-800/50 transition-colors">
+                  <tr key={c.id} className="hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0">
-                          <div className="h-10 w-10 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-red-500 font-bold uppercase">
+                          <div className="h-10 w-10 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-primary-500 font-bold uppercase">
                             <CalendarDays size={20} />
                           </div>
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-white">{c.name}</div>
+                          <div className="text-sm font-medium text-zinc-900 dark:text-white">{c.name}</div>
                           <div className="text-sm text-gray-500">{c.type}</div>
                         </div>
                       </div>
@@ -312,7 +312,7 @@ const ClassesPage = () => {
                               setClassToModify({ id: c.id, action: 'DEACTIVATE' });
                               setIsConfirmModalOpen(true);
                             }}
-                            className="text-red-500/70 hover:text-red-500 transition-colors"
+                            className="text-primary-500/70 hover:text-primary-500 transition-colors"
                             title="Deactivate Class"
                           >
                             <Square size={16} />
@@ -352,13 +352,13 @@ const ClassesPage = () => {
                 <StatusBadge status={selectedClass.isActive ? 'ACTIVE' : 'INACTIVE'} />
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-red-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Class
                 </button>
               </div>
               
-              <div className="bg-gray-950 border border-gray-800 p-4 rounded-lg space-y-4">
+              <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div>
                   <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Class Name</label>
                   <p className="mt-1 text-white text-lg font-medium">{selectedClass.name}</p>
@@ -403,7 +403,7 @@ const ClassesPage = () => {
                     setClassToModify({ id: selectedClass.id, action: 'DEACTIVATE' });
                     setIsConfirmModalOpen(true);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-red-500/20 bg-red-500/10 text-red-500 rounded-md hover:bg-red-500/20 transition-colors font-medium text-sm"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-primary-500/20 bg-red-500/10 text-primary-500 rounded-md hover:bg-red-500/20 transition-colors font-medium text-sm"
                 >
                   <Square size={18} /> Deactivate Class
                 </button>
@@ -422,8 +422,8 @@ const ClassesPage = () => {
           ) : (
             <form onSubmit={handleSave} className="space-y-4">
               {formError && (
-                <div className="p-3 bg-red-500/10 border border-red-500/50 rounded-md">
-                  <p className="text-sm text-red-500">{formError}</p>
+                <div className="p-3 bg-red-500/10 border border-primary-500/50 rounded-md">
+                  <p className="text-sm text-primary-500">{formError}</p>
                 </div>
               )}
               
@@ -434,7 +434,7 @@ const ClassesPage = () => {
                   required
                   value={form.name}
                   onChange={e => setForm({...form, name: e.target.value})}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                  className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                 />
               </div>
 
@@ -445,7 +445,7 @@ const ClassesPage = () => {
                   rows={3}
                   value={form.description}
                   onChange={e => setForm({...form, description: e.target.value})}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500 resize-none"
+                  className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500 resize-none"
                 />
               </div>
 
@@ -457,7 +457,7 @@ const ClassesPage = () => {
                   placeholder="e.g. Yoga, HIIT, Strength"
                   value={form.type}
                   onChange={e => setForm({...form, type: e.target.value})}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                  className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                 />
               </div>
 
@@ -470,7 +470,7 @@ const ClassesPage = () => {
                     min="1"
                     value={form.duration}
                     onChange={e => setForm({...form, duration: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
                 <div>
@@ -481,7 +481,7 @@ const ClassesPage = () => {
                     min="1"
                     value={form.capacity}
                     onChange={e => setForm({...form, capacity: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
               </div>
@@ -491,7 +491,7 @@ const ClassesPage = () => {
                 <select 
                   value={form.defaultTrainerId}
                   onChange={e => setForm({...form, defaultTrainerId: e.target.value})}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                  className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                 >
                   <option value="">Unassigned</option>
                   {trainers
@@ -516,14 +516,14 @@ const ClassesPage = () => {
                     }
                     setFormError(null);
                   }}
-                  className="flex-1 py-2 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="flex-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-red-500 disabled:opacity-50 flex justify-center"
+                  className="flex-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-zinc-900 dark:text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500 disabled:opacity-50 flex justify-center"
                 >
                   {isSaving ? 'Saving...' : slideOverMode === 'ADD' ? 'Create Class' : 'Save Changes'}
                 </button>

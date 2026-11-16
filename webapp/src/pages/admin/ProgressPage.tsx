@@ -169,8 +169,8 @@ const ProgressPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Progress Management</h1>
-          <p className="text-gray-400 mt-1">View, search, and manage member progress tracking records.</p>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">Progress Management</h1>
+          <p className="text-zinc-600 dark:text-zinc-400 mt-1">View, search, and manage member progress tracking records.</p>
         </div>
       </div>
 
@@ -185,7 +185,7 @@ const ProgressPage = () => {
       </div>
 
       {/* Filters Toolbar */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search size={18} className="text-gray-500" />
@@ -195,16 +195,16 @@ const ProgressPage = () => {
             placeholder="Search by member name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="block w-full pl-10 pr-3 py-2 border border-gray-700 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            className="block w-full pl-10 pr-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-xl bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
           />
         </div>
       </div>
 
       {/* Data Table */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-800">
-            <thead className="bg-gray-950">
+          <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
+            <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Member</th>
                 <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Weight / Height</th>
@@ -213,12 +213,12 @@ const ProgressPage = () => {
                 <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-gray-800">
+            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
                     <p className="mt-4 text-gray-400 text-sm">Loading records...</p>
                   </td>
@@ -226,7 +226,7 @@ const ProgressPage = () => {
               ) : error ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
-                    <p className="text-red-500 text-sm">{error}</p>
+                    <p className="text-primary-500 text-sm">{error}</p>
                     <button onClick={fetchData} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
@@ -239,16 +239,16 @@ const ProgressPage = () => {
                 </tr>
               ) : (
                 progressData.map((p) => (
-                  <tr key={p.id} className="hover:bg-gray-800/50 transition-colors">
+                  <tr key={p.id} className="hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0">
-                          <div className="h-10 w-10 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-red-500 font-bold uppercase">
+                          <div className="h-10 w-10 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-primary-500 font-bold uppercase">
                             <Ruler size={20} />
                           </div>
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-white">{p.member.firstName} {p.member.lastName}</div>
+                          <div className="text-sm font-medium text-zinc-900 dark:text-white">{p.member.firstName} {p.member.lastName}</div>
                           <div className="text-sm text-gray-400">ID: {p.memberId.slice(0, 8)}...</div>
                         </div>
                       </div>
@@ -281,7 +281,7 @@ const ProgressPage = () => {
                             setProgressToDelete(p.id);
                             setIsConfirmModalOpen(true);
                           }}
-                          className="text-red-500/70 hover:text-red-500 transition-colors"
+                          className="text-primary-500/70 hover:text-primary-500 transition-colors"
                           title="Delete Record"
                         >
                           <Trash2 size={16} />
@@ -308,13 +308,13 @@ const ProgressPage = () => {
               <div className="flex items-center justify-end">
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-red-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Record
                 </button>
               </div>
               
-              <div className="bg-gray-950 border border-gray-800 p-4 rounded-lg space-y-4">
+              <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Member</label>
@@ -328,7 +328,7 @@ const ProgressPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-800">
+                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                   <div>
                     <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Weight (kg)</label>
                     <p className="mt-1 text-gray-300 font-medium">{selectedProgress.weight}</p>
@@ -344,8 +344,8 @@ const ProgressPage = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-950 border border-gray-800 p-4 rounded-lg space-y-4">
-                <h4 className="text-sm font-semibold text-white border-b border-gray-800 pb-2">Measurements (cm)</h4>
+              <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
+                <h4 className="text-sm font-semibold text-white border-b border-zinc-200 dark:border-zinc-800 pb-2">Measurements (cm)</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Chest</label>
@@ -371,7 +371,7 @@ const ProgressPage = () => {
               </div>
 
               {selectedProgress.notes && (
-                <div className="bg-gray-950 border border-gray-800 p-4 rounded-lg">
+                <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg">
                   <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Notes</label>
                   <p className="mt-1 text-gray-300 text-sm whitespace-pre-wrap">{selectedProgress.notes}</p>
                 </div>
@@ -380,13 +380,13 @@ const ProgressPage = () => {
           ) : (
             <form onSubmit={handleSave} className="space-y-6">
               {formError && (
-                <div className="p-3 bg-red-500/10 border border-red-500/50 rounded-md">
-                  <p className="text-sm text-red-500">{formError}</p>
+                <div className="p-3 bg-red-500/10 border border-primary-500/50 rounded-md">
+                  <p className="text-sm text-primary-500">{formError}</p>
                 </div>
               )}
               
               <div className="space-y-4">
-                <div className="bg-gray-900 border border-gray-800 p-4 rounded-lg">
+                <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg">
                   <p className="text-sm text-gray-300 mb-4">
                     Editing record for: <span className="font-semibold text-white">{selectedProgress?.member.firstName} {selectedProgress?.member.lastName}</span>
                   </p>
@@ -398,7 +398,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="1" required
                         value={form.weight}
                         onChange={e => setForm({...form, weight: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -407,7 +407,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="1" required
                         value={form.height}
                         onChange={e => setForm({...form, height: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -416,7 +416,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="0" max="100"
                         value={form.bodyFatPercentage}
                         onChange={e => setForm({...form, bodyFatPercentage: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -425,14 +425,14 @@ const ProgressPage = () => {
                         type="datetime-local" required
                         value={form.recordedAt}
                         onChange={e => setForm({...form, recordedAt: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500 text-sm"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500 text-sm"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gray-900 border border-gray-800 p-4 rounded-lg space-y-4">
-                  <h4 className="text-sm font-semibold text-white border-b border-gray-800 pb-2">Measurements (cm)</h4>
+                <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
+                  <h4 className="text-sm font-semibold text-white border-b border-zinc-200 dark:border-zinc-800 pb-2">Measurements (cm)</h4>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-medium text-gray-400 mb-1">Chest</label>
@@ -440,7 +440,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="0"
                         value={form.chest}
                         onChange={e => setForm({...form, chest: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -449,7 +449,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="0"
                         value={form.waist}
                         onChange={e => setForm({...form, waist: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -458,7 +458,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="0"
                         value={form.hips}
                         onChange={e => setForm({...form, hips: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -467,7 +467,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="0"
                         value={form.arms}
                         onChange={e => setForm({...form, arms: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -476,7 +476,7 @@ const ProgressPage = () => {
                         type="number" step="0.1" min="0"
                         value={form.thighs}
                         onChange={e => setForm({...form, thighs: e.target.value})}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                   </div>
@@ -488,7 +488,7 @@ const ProgressPage = () => {
                     rows={3}
                     value={form.notes}
                     onChange={e => setForm({...form, notes: e.target.value})}
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white focus:ring-primary-500 focus:border-primary-500"
                   />
                 </div>
               </div>
@@ -500,14 +500,14 @@ const ProgressPage = () => {
                     setSlideOverMode('VIEW');
                     setFormError(null);
                   }}
-                  className="flex-1 py-2.5 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2.5 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="flex-1 py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-red-500 disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="flex-1 py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-zinc-900 dark:text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500 disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   <Save size={16} />
                   {isSaving ? 'Saving...' : 'Save Changes'}

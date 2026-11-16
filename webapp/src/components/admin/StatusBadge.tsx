@@ -10,22 +10,23 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
       case 'ACTIVE':
       case 'PRESENT':
       case 'CONFIRMED':
-        return 'bg-green-500/10 text-green-500 border-green-500/20';
+        return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
       case 'INACTIVE':
       case 'CANCELLED':
       case 'ABSENT':
-        return 'bg-red-500/10 text-red-500 border-red-500/20';
+        return 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20';
       case 'PENDING':
       case 'LATE':
-        return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
+        return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
       default:
-        return 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+        return 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20';
     }
   };
 
   return (
-    <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border uppercase tracking-wider ${getStyles()}`}>
-      {status}
+    <span className={`px-2.5 py-0.5 text-[11px] font-bold rounded-full border uppercase tracking-wider inline-flex items-center gap-1 ${getStyles()}`}>
+      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80"></span>
+      <span>{status}</span>
     </span>
   );
 };
