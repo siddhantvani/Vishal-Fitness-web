@@ -37,7 +37,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="min-h-screen relative flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 transition-colors duration-300">
       <Navbar onOpenModal={() => openModal("Claim Free Trial")} />
       <main className="flex-grow">
         <Outlet context={{ openModal }} />

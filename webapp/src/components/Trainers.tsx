@@ -4,14 +4,14 @@ import { trainers } from '../data/mockData';
 
 const Trainers = () => {
   return (
-    <section id="trainers" className="py-24 bg-zinc-950 transition-colors">
+    <section id="trainers" className="py-24 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 border-t border-zinc-200 dark:border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-sm text-primary-500 font-bold tracking-widest uppercase mb-3">Our Elite Team</h2>
-          <h2 className="text-4xl font-extrabold text-white sm:text-5xl font-heading tracking-tight">
+          <h2 className="text-4xl font-extrabold text-zinc-900 dark:text-white sm:text-5xl font-heading tracking-tight">
             Meet Our Experts
           </h2>
-          <p className="mt-6 text-xl text-zinc-400 leading-relaxed">
+          <p className="mt-6 text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed">
             Train with the best. Our certified professionals are here to guide you every step of the way.
           </p>
         </div>
@@ -25,7 +25,7 @@ const Trainers = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-zinc-200 dark:border-white/5"
             >
               <div className="aspect-w-3 aspect-h-4 overflow-hidden rounded-3xl">
                 <img
@@ -43,7 +43,7 @@ const Trainers = () => {
                 </div>
                 
                 <div className="absolute bottom-6 left-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <button className="w-full py-3 bg-white text-black font-semibold rounded-xl hover:bg-primary-500 hover:text-white transition-colors">
+                  <button className="w-full py-3 bg-white text-zinc-900 font-semibold rounded-xl hover:bg-primary-500 hover:text-white transition-colors shadow-lg">
                     Book Session
                   </button>
                 </div>

@@ -49,7 +49,7 @@ const Register = () => {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-zinc-50 dark:bg-black transition-colors pt-24 pb-12 flex flex-col justify-center sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 pt-24 pb-12 flex flex-col justify-center sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
           <CheckCircle className="w-20 h-20 text-primary-500 mx-auto mb-6" />
           <h2 className="text-3xl font-extrabold text-zinc-900 dark:text-white font-heading tracking-tight mb-2">
@@ -64,7 +64,7 @@ const Register = () => {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black transition-colors pt-24 pb-12 flex flex-col justify-center sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 pt-24 pb-12 flex flex-col justify-center sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <div className="w-16 h-16 bg-primary-500/10 rounded-2xl flex items-center justify-center border border-primary-500/20">

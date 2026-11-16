@@ -5,7 +5,7 @@ import { testimonials } from '../data/mockData';
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-zinc-50 dark:bg-black transition-colors">
+    <section className="py-24 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 border-t border-zinc-200 dark:border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <h2 className="text-sm text-primary-500 font-bold tracking-widest uppercase mb-3">Success Stories</h2>
