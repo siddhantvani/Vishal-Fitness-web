@@ -4,6 +4,7 @@ import Programs from '../components/Programs';
 import Transformations from '../components/Transformations';
 import Locations from '../components/Locations';
 import Testimonials from '../components/Testimonials';
+import GoogleReviews from '../components/GoogleReviews';
 import CTA from '../components/CTA';
 import { useOutletContext } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ const Home = () => {
       <Programs />
       <Transformations />
       <Testimonials />
+      <GoogleReviews />
       <Locations />
       <CTA onOpenModal={() => openModal("Claim Free Trial")} />
     </>

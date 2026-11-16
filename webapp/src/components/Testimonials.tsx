@@ -10,7 +10,7 @@ const Testimonials = () => {
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <h2 className="text-sm text-primary-500 font-bold tracking-widest uppercase mb-3">Success Stories</h2>
           <h2 className="text-4xl font-extrabold text-zinc-900 dark:text-white sm:text-5xl font-heading tracking-tight">
-            What Our Members Say
+            Member Transformations & Stories
           </h2>
         </div>
         
