@@ -1,32 +1,74 @@
-# React + TypeScript + Vite
+# Vishal Fitness — Web Platform & Admin Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Modern React and Vite web application for the Vishal Fitness gym, featuring both a public member-facing site and a full-featured Admin Management Dashboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Project Overview
 
-## React Compiler
+**Vishal Fitness Web** is the digital hub for Vishal Fitness Gym, providing:
+- **Public & Member Portal:**
+  - Modern hero section, program discovery, and interactive class schedule
+  - Trainer showcase and client transformation stories
+  - Interactive BMI and caloric/workout calculators
+  - Direct WhatsApp quick-booking and class reservation modal
+  - Member account registration, login, and authenticated booking
+- **Admin Management Portal:**
+  - Comprehensive dashboard with operational metrics
+  - Members management (view, edit status, delete)
+  - Trainers management (create, update, manage profiles)
+  - Classes & schedule management (create, edit, cancel schedules)
+  - Bookings administration (confirm, cancel, view status)
+  - Attendance tracking and verification
+  - Member workout routine assignments and progress logs
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Framework:** React 18 + Vite
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS with PostCSS & custom dark glassmorphism
+- **Routing:** React Router v6
+- **Icons:** Lucide React
+- **State & Context:** React Context API (`AuthContext`, `ThemeContext`)
+- **HTTP Client:** Axios with JWT Bearer authentication interceptor
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+## 🚀 Getting Started
+
+### 1. Installation
+
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 2. Environment Setup
+
+Copy `.env.example` to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Set the backend API URL:
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+
+### 3. Development Commands
+
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Start development server at `http://localhost:5173` |
+| `npm run build` | Build production bundle into `dist/` |
+| `npm run preview` | Locally preview production build |
+| `npm run lint` | Run code linter |
+
+---
+
+## 📄 License
+
+ISC License. All rights reserved.

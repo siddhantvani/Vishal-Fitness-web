@@ -85,3 +85,4 @@ const AdminSidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
 };
 
 export default AdminSidebar;
+
