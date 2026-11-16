@@ -188,7 +188,7 @@ const ProgressPage = () => {
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search size={18} className="text-gray-500" />
+            <Search size={18} className="text-zinc-500 dark:text-zinc-400" />
           </div>
           <input
             type="text"
@@ -206,35 +206,35 @@ const ProgressPage = () => {
           <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
             <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Member</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Weight / Height</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Body Fat</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Recorded Date</th>
-                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Member</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Weight / Height</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Body Fat</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Recorded Date</th>
+                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
+            <tbody className="bg-white dark:bg-zinc-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
-                    <p className="mt-4 text-gray-400 text-sm">Loading records...</p>
+                    <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm">Loading records...</p>
                   </td>
                 </tr>
               ) : error ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
                     <p className="text-primary-500 text-sm">{error}</p>
-                    <button onClick={fetchData} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
+                    <button onClick={fetchData} className="mt-2 text-sm text-rose-500 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
               ) : progressData.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
-                    <LineChart size={40} className="mx-auto text-gray-600 mb-4" />
-                    <p className="text-gray-400 text-sm">No progress records found matching your criteria.</p>
+                    <LineChart size={40} className="mx-auto text-zinc-400 dark:text-zinc-500 mb-4" />
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">No progress records found matching your criteria.</p>
                   </td>
                 </tr>
               ) : (
@@ -249,29 +249,29 @@ const ProgressPage = () => {
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-zinc-900 dark:text-white">{p.member.firstName} {p.member.lastName}</div>
-                          <div className="text-sm text-gray-400">ID: {p.memberId.slice(0, 8)}...</div>
+                          <div className="text-sm text-zinc-500 dark:text-zinc-400">ID: {p.memberId.slice(0, 8)}...</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">
                         {p.weight} kg / {p.height} cm
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">
                         {p.bodyFatPercentage ? `${p.bodyFatPercentage}%` : '-'}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-white">{new Date(p.recordedAt).toLocaleDateString()}</div>
-                      <div className="text-xs text-gray-500">{new Date(p.recordedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                      <div className="text-xs text-zinc-500 dark:text-zinc-400">{new Date(p.recordedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex items-center justify-end gap-3">
                         <button 
                           onClick={() => handleOpenDetails(p)}
-                          className="text-gray-400 hover:text-white transition-colors"
+                          className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
                           title="View Details"
                         >
                           <Eye size={18} />
@@ -308,7 +308,7 @@ const ProgressPage = () => {
               <div className="flex items-center justify-end">
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-rose-500 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Record
                 </button>
@@ -317,12 +317,12 @@ const ProgressPage = () => {
               <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Member</label>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Member</label>
                     <p className="mt-1 text-white text-lg font-medium">{selectedProgress.member.firstName} {selectedProgress.member.lastName}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Recorded Date</label>
-                    <p className="mt-1 text-gray-300">
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Recorded Date</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">
                       {new Date(selectedProgress.recordedAt).toLocaleDateString()} {new Date(selectedProgress.recordedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
@@ -330,16 +330,16 @@ const ProgressPage = () => {
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Weight (kg)</label>
-                    <p className="mt-1 text-gray-300 font-medium">{selectedProgress.weight}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Weight (kg)</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 font-medium">{selectedProgress.weight}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Height (cm)</label>
-                    <p className="mt-1 text-gray-300 font-medium">{selectedProgress.height}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Height (cm)</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 font-medium">{selectedProgress.height}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Body Fat %</label>
-                    <p className="mt-1 text-gray-300 font-medium">{selectedProgress.bodyFatPercentage ?? '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Body Fat %</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 font-medium">{selectedProgress.bodyFatPercentage ?? '-'}</p>
                   </div>
                 </div>
               </div>
@@ -348,32 +348,32 @@ const ProgressPage = () => {
                 <h4 className="text-sm font-semibold text-white border-b border-zinc-200 dark:border-zinc-800 pb-2">Measurements (cm)</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Chest</label>
-                    <p className="mt-1 text-gray-300">{selectedProgress.chest ?? '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Chest</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedProgress.chest ?? '-'}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Waist</label>
-                    <p className="mt-1 text-gray-300">{selectedProgress.waist ?? '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Waist</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedProgress.waist ?? '-'}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Hips</label>
-                    <p className="mt-1 text-gray-300">{selectedProgress.hips ?? '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Hips</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedProgress.hips ?? '-'}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Arms</label>
-                    <p className="mt-1 text-gray-300">{selectedProgress.arms ?? '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Arms</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedProgress.arms ?? '-'}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Thighs</label>
-                    <p className="mt-1 text-gray-300">{selectedProgress.thighs ?? '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Thighs</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedProgress.thighs ?? '-'}</p>
                   </div>
                 </div>
               </div>
 
               {selectedProgress.notes && (
                 <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg">
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Notes</label>
-                  <p className="mt-1 text-gray-300 text-sm whitespace-pre-wrap">{selectedProgress.notes}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Notes</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm whitespace-pre-wrap">{selectedProgress.notes}</p>
                 </div>
               )}
             </div>
@@ -387,13 +387,13 @@ const ProgressPage = () => {
               
               <div className="space-y-4">
                 <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg">
-                  <p className="text-sm text-gray-300 mb-4">
+                  <p className="text-sm text-zinc-700 dark:text-zinc-300 mb-4">
                     Editing record for: <span className="font-semibold text-white">{selectedProgress?.member.firstName} {selectedProgress?.member.lastName}</span>
                   </p>
                   
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Weight (kg) *</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Weight (kg) *</label>
                       <input 
                         type="number" step="0.1" min="1" required
                         value={form.weight}
@@ -402,7 +402,7 @@ const ProgressPage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Height (cm) *</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Height (cm) *</label>
                       <input 
                         type="number" step="0.1" min="1" required
                         value={form.height}
@@ -411,7 +411,7 @@ const ProgressPage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Body Fat %</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Body Fat %</label>
                       <input 
                         type="number" step="0.1" min="0" max="100"
                         value={form.bodyFatPercentage}
@@ -420,7 +420,7 @@ const ProgressPage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Recorded Date *</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Recorded Date *</label>
                       <input 
                         type="datetime-local" required
                         value={form.recordedAt}
@@ -435,7 +435,7 @@ const ProgressPage = () => {
                   <h4 className="text-sm font-semibold text-white border-b border-zinc-200 dark:border-zinc-800 pb-2">Measurements (cm)</h4>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Chest</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Chest</label>
                       <input 
                         type="number" step="0.1" min="0"
                         value={form.chest}
@@ -444,7 +444,7 @@ const ProgressPage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Waist</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Waist</label>
                       <input 
                         type="number" step="0.1" min="0"
                         value={form.waist}
@@ -453,7 +453,7 @@ const ProgressPage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Hips</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Hips</label>
                       <input 
                         type="number" step="0.1" min="0"
                         value={form.hips}
@@ -462,7 +462,7 @@ const ProgressPage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Arms</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Arms</label>
                       <input 
                         type="number" step="0.1" min="0"
                         value={form.arms}
@@ -471,7 +471,7 @@ const ProgressPage = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">Thighs</label>
+                      <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Thighs</label>
                       <input 
                         type="number" step="0.1" min="0"
                         value={form.thighs}
@@ -483,7 +483,7 @@ const ProgressPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Notes</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Notes</label>
                   <textarea 
                     rows={3}
                     value={form.notes}
@@ -500,7 +500,7 @@ const ProgressPage = () => {
                     setSlideOverMode('VIEW');
                     setFormError(null);
                   }}
-                  className="flex-1 py-2.5 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2.5 px-4 border border-zinc-300 dark:border-zinc-700 rounded-md shadow-sm text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>

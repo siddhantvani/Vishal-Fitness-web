@@ -140,7 +140,7 @@ const BookingsPage = () => {
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search size={18} className="text-gray-500" />
+            <Search size={18} className="text-zinc-500 dark:text-zinc-400" />
           </div>
           <input
             type="text"
@@ -154,7 +154,7 @@ const BookingsPage = () => {
         <div className="flex gap-4">
           <div className="relative min-w-[160px]">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Filter size={18} className="text-gray-500" />
+              <Filter size={18} className="text-zinc-500 dark:text-zinc-400" />
             </div>
             <select
               value={statusFilter}
@@ -177,22 +177,22 @@ const BookingsPage = () => {
           <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
             <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Member</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Class</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider hidden md:table-cell">Schedule</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider hidden lg:table-cell">Booked At</th>
-                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Member</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Class</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider hidden md:table-cell">Schedule</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Status</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider hidden lg:table-cell">Booked At</th>
+                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
+            <tbody className="bg-white dark:bg-zinc-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
-                    <p className="mt-4 text-gray-400 text-sm">Loading bookings...</p>
+                    <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm">Loading bookings...</p>
                   </td>
                 </tr>
               ) : error ? (
@@ -201,15 +201,15 @@ const BookingsPage = () => {
                     <div className="flex flex-col items-center justify-center">
                       <AlertCircle className="text-primary-500 w-10 h-10 mb-4" />
                       <p className="text-primary-500 text-sm">{error}</p>
-                      <button onClick={fetchBookings} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
+                      <button onClick={fetchBookings} className="mt-2 text-sm text-rose-500 hover:text-red-300">Try again</button>
                     </div>
                   </td>
                 </tr>
               ) : filteredBookings.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
-                    <BookmarkCheck size={40} className="mx-auto text-gray-600 mb-4" />
-                    <p className="text-gray-400 text-sm">No bookings found matching your criteria.</p>
+                    <BookmarkCheck size={40} className="mx-auto text-zinc-400 dark:text-zinc-500 mb-4" />
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">No bookings found matching your criteria.</p>
                   </td>
                 </tr>
               ) : (
@@ -218,39 +218,39 @@ const BookingsPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0">
-                          <div className="h-10 w-10 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-gray-300 font-bold uppercase">
+                          <div className="h-10 w-10 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-700 dark:text-zinc-300 font-bold uppercase">
                             {booking.member.firstName[0]}{booking.member.lastName[0]}
                           </div>
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-zinc-900 dark:text-white">{booking.member.firstName} {booking.member.lastName}</div>
-                          <div className="text-sm text-gray-500">{booking.member.email}</div>
+                          <div className="text-sm text-zinc-500 dark:text-zinc-400">{booking.member.email}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-white">{booking.schedule.class.name}</div>
-                      <div className="text-sm text-gray-500">{booking.schedule.trainer.firstName} {booking.schedule.trainer.lastName}</div>
+                      <div className="text-sm text-zinc-500 dark:text-zinc-400">{booking.schedule.trainer.firstName} {booking.schedule.trainer.lastName}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap hidden md:table-cell">
-                      <div className="text-sm text-gray-300">
+                      <div className="text-sm text-zinc-700 dark:text-zinc-300">
                         {new Date(booking.schedule.startTime).toLocaleDateString()}
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-zinc-500 dark:text-zinc-400">
                         {new Date(booking.schedule.startTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <StatusBadge status={booking.status} />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap hidden lg:table-cell text-sm text-gray-400">
+                    <td className="px-6 py-4 whitespace-nowrap hidden lg:table-cell text-sm text-zinc-500 dark:text-zinc-400">
                       {new Date(booking.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex items-center justify-end gap-3">
                         <button 
                           onClick={() => handleOpenDetails(booking)}
-                          className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 bg-gray-800 hover:bg-gray-700 px-3 py-1.5 rounded-lg"
+                          className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors flex items-center gap-1 bg-zinc-100 dark:bg-zinc-800 hover:bg-gray-700 px-3 py-1.5 rounded-lg"
                         >
                           <Eye size={16} /> Details
                         </button>
@@ -287,7 +287,7 @@ const BookingsPage = () => {
                 {selectedBooking.status === 'CANCELLED' && (
                   <button 
                     onClick={() => handleStatusChangeRequest(selectedBooking.id, 'CONFIRMED')}
-                    className="text-xs font-semibold px-3 py-1.5 bg-green-500/10 text-green-500 hover:bg-green-500/20 rounded-md transition-colors border border-green-500/20"
+                    className="text-xs font-semibold px-3 py-1.5 bg-green-500/10 text-emerald-500 hover:bg-green-500/20 rounded-md transition-colors border border-green-500/20"
                   >
                     Restore Booking
                   </button>
@@ -300,16 +300,16 @@ const BookingsPage = () => {
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">Member Information</h3>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</label>
-                    <p className="mt-1 text-gray-300 font-medium">{selectedBooking.member.firstName} {selectedBooking.member.lastName}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Full Name</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 font-medium">{selectedBooking.member.firstName} {selectedBooking.member.lastName}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Email Address</label>
-                    <p className="mt-1 text-gray-300">{selectedBooking.member.email}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Email Address</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedBooking.member.email}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Phone Number</label>
-                    <p className="mt-1 text-gray-300">{selectedBooking.member.phone || 'Not provided'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Phone Number</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedBooking.member.phone || 'Not provided'}</p>
                   </div>
                 </div>
               </div>
@@ -318,21 +318,21 @@ const BookingsPage = () => {
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2 mt-2">Class Information</h3>
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Class Name</label>
-                    <p className="mt-1 text-gray-300 font-medium">{selectedBooking.schedule.class.name}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Class Name</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 font-medium">{selectedBooking.schedule.class.name}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Trainer</label>
-                    <p className="mt-1 text-gray-300">{selectedBooking.schedule.trainer.firstName} {selectedBooking.schedule.trainer.lastName}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Trainer</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedBooking.schedule.trainer.firstName} {selectedBooking.schedule.trainer.lastName}</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Date</label>
-                      <p className="mt-1 text-gray-300">{new Date(selectedBooking.schedule.startTime).toLocaleDateString()}</p>
+                      <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Date</label>
+                      <p className="mt-1 text-zinc-700 dark:text-zinc-300">{new Date(selectedBooking.schedule.startTime).toLocaleDateString()}</p>
                     </div>
                     <div>
-                      <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Time</label>
-                      <p className="mt-1 text-gray-300">
+                      <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Time</label>
+                      <p className="mt-1 text-zinc-700 dark:text-zinc-300">
                         {new Date(selectedBooking.schedule.startTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - 
                         {new Date(selectedBooking.schedule.endTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                       </p>
@@ -345,12 +345,12 @@ const BookingsPage = () => {
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2 mt-2">Booking Records</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Booked On</label>
-                    <p className="mt-1 text-gray-300 text-sm">{new Date(selectedBooking.createdAt).toLocaleString()}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Booked On</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm">{new Date(selectedBooking.createdAt).toLocaleString()}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Last Updated</label>
-                    <p className="mt-1 text-gray-300 text-sm">{new Date(selectedBooking.updatedAt).toLocaleString()}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Last Updated</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm">{new Date(selectedBooking.updatedAt).toLocaleString()}</p>
                   </div>
                 </div>
               </div>

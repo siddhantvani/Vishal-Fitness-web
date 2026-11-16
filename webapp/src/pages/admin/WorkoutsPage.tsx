@@ -306,7 +306,7 @@ const WorkoutsPage = () => {
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search size={18} className="text-gray-500" />
+            <Search size={18} className="text-zinc-500 dark:text-zinc-400" />
           </div>
           <input
             type="text"
@@ -347,36 +347,36 @@ const WorkoutsPage = () => {
           <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
             <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Plan & Difficulty</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Member</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Trainer</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Exercises</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
-                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Plan & Difficulty</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Member</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Trainer</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Exercises</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Status</th>
+                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
+            <tbody className="bg-white dark:bg-zinc-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
-                    <p className="mt-4 text-gray-400 text-sm">Loading workouts...</p>
+                    <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm">Loading workouts...</p>
                   </td>
                 </tr>
               ) : error ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <p className="text-primary-500 text-sm">{error}</p>
-                    <button onClick={fetchData} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
+                    <button onClick={fetchData} className="mt-2 text-sm text-rose-500 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
               ) : workouts.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
-                    <Activity size={40} className="mx-auto text-gray-600 mb-4" />
-                    <p className="text-gray-400 text-sm">No workouts found matching your criteria.</p>
+                    <Activity size={40} className="mx-auto text-zinc-400 dark:text-zinc-500 mb-4" />
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">No workouts found matching your criteria.</p>
                   </td>
                 </tr>
               ) : (
@@ -391,22 +391,22 @@ const WorkoutsPage = () => {
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-zinc-900 dark:text-white">{w.title}</div>
-                          <div className="text-sm text-gray-400">{w.difficulty}</div>
+                          <div className="text-sm text-zinc-500 dark:text-zinc-400">{w.difficulty}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">
                         {w.member.firstName} {w.member.lastName}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">
                         {w.trainer.firstName} {w.trainer.lastName}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">
                         {w.exercises?.length || 0} exercises
                       </span>
                     </td>
@@ -417,7 +417,7 @@ const WorkoutsPage = () => {
                       <div className="flex items-center justify-end gap-3">
                         <button 
                           onClick={() => handleOpenDetails(w)}
-                          className="text-gray-400 hover:text-white transition-colors"
+                          className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
                           title="View Details"
                         >
                           <Eye size={18} />
@@ -429,7 +429,7 @@ const WorkoutsPage = () => {
                               setWorkoutToModify({ id: w.id, action: 'COMPLETED' });
                               setIsConfirmModalOpen(true);
                             }}
-                            className="text-green-500/70 hover:text-green-500 transition-colors"
+                            className="text-emerald-500/70 hover:text-emerald-500 transition-colors"
                             title="Mark Completed"
                           >
                             <CheckCircle size={16} />
@@ -469,7 +469,7 @@ const WorkoutsPage = () => {
                 <StatusBadge status={selectedWorkout.status} />
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-rose-500 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Workout
                 </button>
@@ -478,28 +478,28 @@ const WorkoutsPage = () => {
               <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Plan Name</label>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Plan Name</label>
                     <p className="mt-1 text-white text-lg font-medium">{selectedWorkout.title}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Difficulty</label>
-                    <p className="mt-1 text-gray-300">{selectedWorkout.difficulty}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Difficulty</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedWorkout.difficulty}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Member</label>
-                    <p className="mt-1 text-gray-300">{selectedWorkout.member.firstName} {selectedWorkout.member.lastName}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Member</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedWorkout.member.firstName} {selectedWorkout.member.lastName}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Trainer</label>
-                    <p className="mt-1 text-gray-300">{selectedWorkout.trainer.firstName} {selectedWorkout.trainer.lastName}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Trainer</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedWorkout.trainer.firstName} {selectedWorkout.trainer.lastName}</p>
                   </div>
                 </div>
                 {selectedWorkout.description && (
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Description</label>
-                    <p className="mt-1 text-gray-300 text-sm whitespace-pre-wrap">{selectedWorkout.description}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Description</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm whitespace-pre-wrap">{selectedWorkout.description}</p>
                   </div>
                 )}
               </div>
@@ -514,16 +514,16 @@ const WorkoutsPage = () => {
                       <div key={ex.id || idx} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg">
                         <div className="flex justify-between items-start">
                           <h5 className="font-medium text-white">{ex.order}. {ex.name}</h5>
-                          <span className="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">
+                          <span className="text-xs text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
                             {ex.sets} Sets × {ex.repetitions} Reps
                           </span>
                         </div>
-                        {ex.notes && <p className="text-xs text-gray-400 mt-2">Note: {ex.notes}</p>}
+                        {ex.notes && <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">Note: {ex.notes}</p>}
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-gray-500 text-sm italic">No exercises added yet.</p>
+                  <p className="text-zinc-500 dark:text-zinc-400 text-sm italic">No exercises added yet.</p>
                 )}
               </div>
             </div>
@@ -539,7 +539,7 @@ const WorkoutsPage = () => {
                 <h4 className="text-lg font-semibold text-white border-b border-zinc-200 dark:border-zinc-800 pb-2">Plan Details</h4>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Plan Title *</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Plan Title *</label>
                   <input 
                     type="text" 
                     required
@@ -552,7 +552,7 @@ const WorkoutsPage = () => {
 
                 {slideOverMode === 'ADD' && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-1">Assign to Member *</label>
+                    <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Assign to Member *</label>
                     <select 
                       required
                       value={form.memberId}
@@ -570,12 +570,12 @@ const WorkoutsPage = () => {
                 )}
                 
                 {slideOverMode === 'ADD' && (
-                  <p className="text-xs text-gray-500 italic">Note: The trainer assigned will be the currently authenticated user.</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 italic">Note: The trainer assigned will be the currently authenticated user.</p>
                 )}
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-1">Difficulty</label>
+                    <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Difficulty</label>
                     <select 
                       value={form.difficulty}
                       onChange={e => setForm({...form, difficulty: e.target.value as any})}
@@ -587,7 +587,7 @@ const WorkoutsPage = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-1">Status</label>
+                    <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Status</label>
                     <select 
                       value={form.status}
                       onChange={e => setForm({...form, status: e.target.value as any})}
@@ -601,7 +601,7 @@ const WorkoutsPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Goal (Optional)</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Goal (Optional)</label>
                   <input 
                     type="text" 
                     value={form.goal}
@@ -611,7 +611,7 @@ const WorkoutsPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Description (Optional)</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Description (Optional)</label>
                   <textarea 
                     rows={3}
                     value={form.description}
@@ -629,31 +629,31 @@ const WorkoutsPage = () => {
                   <button
                     type="button"
                     onClick={handleAddExerciseRow}
-                    className="text-sm flex items-center gap-1 text-primary-500 hover:text-red-400 transition-colors"
+                    className="text-sm flex items-center gap-1 text-primary-500 hover:text-rose-500 transition-colors"
                   >
                     <Plus size={16} /> Add Exercise
                   </button>
                 </div>
 
                 {exercises.length === 0 ? (
-                  <p className="text-gray-500 text-sm italic text-center py-4 bg-gray-900 rounded-lg border border-zinc-200 dark:border-zinc-800">
+                  <p className="text-zinc-500 dark:text-zinc-400 text-sm italic text-center py-4 bg-zinc-50 dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800">
                     No exercises added yet. Click "Add Exercise" to start building the plan.
                   </p>
                 ) : (
                   <div className="space-y-4">
                     {exercises.map((ex, idx) => (
-                      <div key={ex.id || idx} className="bg-white dark:bg-zinc-900 border border-gray-700 rounded-lg p-4 space-y-3 relative">
+                      <div key={ex.id || idx} className="bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-lg p-4 space-y-3 relative">
                         <button
                           type="button"
                           onClick={() => handleRemoveExerciseRow(idx, ex.id)}
-                          className="absolute top-4 right-4 text-gray-500 hover:text-primary-500 transition-colors"
+                          className="absolute top-4 right-4 text-zinc-500 dark:text-zinc-400 hover:text-primary-500 transition-colors"
                           title="Remove Exercise"
                         >
                           <Trash2 size={16} />
                         </button>
                         
                         <div>
-                          <label className="block text-xs font-medium text-gray-400 mb-1">Exercise Name *</label>
+                          <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Exercise Name *</label>
                           <input 
                             type="text" 
                             required
@@ -666,7 +666,7 @@ const WorkoutsPage = () => {
                         
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <label className="block text-xs font-medium text-gray-400 mb-1">Sets</label>
+                            <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Sets</label>
                             <input 
                               type="number" 
                               min="0"
@@ -676,7 +676,7 @@ const WorkoutsPage = () => {
                             />
                           </div>
                           <div>
-                            <label className="block text-xs font-medium text-gray-400 mb-1">Reps</label>
+                            <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Reps</label>
                             <input 
                               type="number" 
                               min="0"
@@ -688,7 +688,7 @@ const WorkoutsPage = () => {
                         </div>
 
                         <div>
-                          <label className="block text-xs font-medium text-gray-400 mb-1">Notes (Optional)</label>
+                          <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Notes (Optional)</label>
                           <input 
                             type="text" 
                             value={ex.notes || ''}
@@ -714,7 +714,7 @@ const WorkoutsPage = () => {
                     }
                     setFormError(null);
                   }}
-                  className="flex-1 py-2.5 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2.5 px-4 border border-zinc-300 dark:border-zinc-700 rounded-md shadow-sm text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>

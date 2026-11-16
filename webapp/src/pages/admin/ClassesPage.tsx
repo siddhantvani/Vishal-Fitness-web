@@ -204,7 +204,7 @@ const ClassesPage = () => {
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search size={18} className="text-gray-500" />
+            <Search size={18} className="text-zinc-500 dark:text-zinc-400" />
           </div>
           <input
             type="text"
@@ -234,36 +234,36 @@ const ClassesPage = () => {
           <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
             <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Class</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Trainer</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Duration</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Capacity</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
-                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Class</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Trainer</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Duration</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Capacity</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Status</th>
+                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
+            <tbody className="bg-white dark:bg-zinc-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
-                    <p className="mt-4 text-gray-400 text-sm">Loading classes...</p>
+                    <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm">Loading classes...</p>
                   </td>
                 </tr>
               ) : error ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <p className="text-primary-500 text-sm">{error}</p>
-                    <button onClick={fetchData} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
+                    <button onClick={fetchData} className="mt-2 text-sm text-rose-500 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
               ) : classes.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
-                    <CalendarDays size={40} className="mx-auto text-gray-600 mb-4" />
-                    <p className="text-gray-400 text-sm">No classes found matching your criteria.</p>
+                    <CalendarDays size={40} className="mx-auto text-zinc-400 dark:text-zinc-500 mb-4" />
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">No classes found matching your criteria.</p>
                   </td>
                 </tr>
               ) : (
@@ -278,20 +278,20 @@ const ClassesPage = () => {
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-zinc-900 dark:text-white">{c.name}</div>
-                          <div className="text-sm text-gray-500">{c.type}</div>
+                          <div className="text-sm text-zinc-500 dark:text-zinc-400">{c.type}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">
                         {c.defaultTrainer ? `${c.defaultTrainer.firstName} ${c.defaultTrainer.lastName}` : 'Unassigned'}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">{c.duration} mins</span>
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">{c.duration} mins</span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">{c.capacity} members</span>
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">{c.capacity} members</span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <StatusBadge status={c.isActive ? 'ACTIVE' : 'INACTIVE'} />
@@ -300,7 +300,7 @@ const ClassesPage = () => {
                       <div className="flex items-center justify-end gap-3">
                         <button 
                           onClick={() => handleOpenDetails(c)}
-                          className="text-gray-400 hover:text-white transition-colors"
+                          className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
                           title="View Details"
                         >
                           <Eye size={18} />
@@ -323,7 +323,7 @@ const ClassesPage = () => {
                               setClassToModify({ id: c.id, action: 'ACTIVATE' });
                               setIsConfirmModalOpen(true);
                             }}
-                            className="text-green-500/70 hover:text-green-500 transition-colors"
+                            className="text-emerald-500/70 hover:text-emerald-500 transition-colors"
                             title="Activate Class"
                           >
                             <Play size={16} fill="currentColor" />
@@ -352,7 +352,7 @@ const ClassesPage = () => {
                 <StatusBadge status={selectedClass.isActive ? 'ACTIVE' : 'INACTIVE'} />
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-rose-500 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Class
                 </button>
@@ -360,21 +360,21 @@ const ClassesPage = () => {
               
               <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Class Name</label>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Class Name</label>
                   <p className="mt-1 text-white text-lg font-medium">{selectedClass.name}</p>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Description</label>
-                  <p className="mt-1 text-gray-300">{selectedClass.description}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Description</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedClass.description}</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Type</label>
-                    <p className="mt-1 text-gray-300">{selectedClass.type}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Type</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedClass.type}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Trainer</label>
-                    <p className="mt-1 text-gray-300">
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Trainer</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">
                       {selectedClass.defaultTrainer 
                         ? `${selectedClass.defaultTrainer.firstName} ${selectedClass.defaultTrainer.lastName}`
                         : 'Unassigned'}
@@ -383,17 +383,17 @@ const ClassesPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</label>
-                    <p className="mt-1 text-gray-300">{selectedClass.duration} minutes</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Duration</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedClass.duration} minutes</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Capacity</label>
-                    <p className="mt-1 text-gray-300">{selectedClass.capacity} members</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Capacity</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedClass.capacity} members</p>
                   </div>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Created Date</label>
-                  <p className="mt-1 text-gray-300">{new Date(selectedClass.createdAt).toLocaleDateString()}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Created Date</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300">{new Date(selectedClass.createdAt).toLocaleDateString()}</p>
                 </div>
               </div>
 
@@ -413,7 +413,7 @@ const ClassesPage = () => {
                     setClassToModify({ id: selectedClass.id, action: 'ACTIVATE' });
                     setIsConfirmModalOpen(true);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-green-500/20 bg-green-500/10 text-green-500 rounded-md hover:bg-green-500/20 transition-colors font-medium text-sm"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-green-500/20 bg-green-500/10 text-emerald-500 rounded-md hover:bg-green-500/20 transition-colors font-medium text-sm"
                 >
                   <Play size={18} fill="currentColor" /> Activate Class
                 </button>
@@ -428,7 +428,7 @@ const ClassesPage = () => {
               )}
               
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Class Name *</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Class Name *</label>
                 <input 
                   type="text" 
                   required
@@ -439,7 +439,7 @@ const ClassesPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Description *</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Description *</label>
                 <textarea 
                   required
                   rows={3}
@@ -450,7 +450,7 @@ const ClassesPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Class Type *</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Class Type *</label>
                 <input 
                   type="text" 
                   required
@@ -463,7 +463,7 @@ const ClassesPage = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Duration (mins) *</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Duration (mins) *</label>
                   <input 
                     type="number" 
                     required
@@ -474,7 +474,7 @@ const ClassesPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Capacity *</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Capacity *</label>
                   <input 
                     type="number" 
                     required
@@ -487,7 +487,7 @@ const ClassesPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Default Trainer</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Default Trainer</label>
                 <select 
                   value={form.defaultTrainerId}
                   onChange={e => setForm({...form, defaultTrainerId: e.target.value})}
@@ -502,7 +502,7 @@ const ClassesPage = () => {
                       </option>
                   ))}
                 </select>
-                <p className="text-xs text-gray-500 mt-1">Only active trainers can be assigned to new classes.</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Only active trainers can be assigned to new classes.</p>
               </div>
 
               <div className="pt-4 flex gap-3">
@@ -516,7 +516,7 @@ const ClassesPage = () => {
                     }
                     setFormError(null);
                   }}
-                  className="flex-1 py-2 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2 px-4 border border-zinc-300 dark:border-zinc-700 rounded-md shadow-sm text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>

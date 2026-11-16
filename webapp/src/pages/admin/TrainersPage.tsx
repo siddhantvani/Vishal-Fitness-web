@@ -213,7 +213,7 @@ const TrainersPage = () => {
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search size={18} className="text-gray-500" />
+            <Search size={18} className="text-zinc-500 dark:text-zinc-400" />
           </div>
           <input
             type="text"
@@ -243,35 +243,35 @@ const TrainersPage = () => {
           <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
             <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Trainer</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Specialization</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Availability</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
-                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Trainer</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Specialization</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Availability</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Status</th>
+                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
+            <tbody className="bg-white dark:bg-zinc-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
-                    <p className="mt-4 text-gray-400 text-sm">Loading trainers...</p>
+                    <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm">Loading trainers...</p>
                   </td>
                 </tr>
               ) : error ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
                     <p className="text-primary-500 text-sm">{error}</p>
-                    <button onClick={fetchTrainers} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
+                    <button onClick={fetchTrainers} className="mt-2 text-sm text-rose-500 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
               ) : trainers.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
-                    <Dumbbell size={40} className="mx-auto text-gray-600 mb-4" />
-                    <p className="text-gray-400 text-sm">No trainers found matching your criteria.</p>
+                    <Dumbbell size={40} className="mx-auto text-zinc-400 dark:text-zinc-500 mb-4" />
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">No trainers found matching your criteria.</p>
                   </td>
                 </tr>
               ) : (
@@ -280,21 +280,21 @@ const TrainersPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="h-10 w-10 flex-shrink-0">
-                          <div className="h-10 w-10 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-gray-300 font-bold uppercase">
+                          <div className="h-10 w-10 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-700 dark:text-zinc-300 font-bold uppercase">
                             {trainer.firstName[0]}{trainer.lastName[0]}
                           </div>
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-zinc-900 dark:text-white">{trainer.firstName} {trainer.lastName}</div>
-                          <div className="text-sm text-gray-500">{trainer.email}</div>
+                          <div className="text-sm text-zinc-500 dark:text-zinc-400">{trainer.email}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">{trainer.specialization || '-'}</span>
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">{trainer.specialization || '-'}</span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm text-gray-300">{trainer.availability || '-'}</span>
+                      <span className="text-sm text-zinc-700 dark:text-zinc-300">{trainer.availability || '-'}</span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <StatusBadge status={trainer.isActive ? 'ACTIVE' : 'INACTIVE'} />
@@ -303,7 +303,7 @@ const TrainersPage = () => {
                       <div className="flex items-center justify-end gap-3">
                         <button 
                           onClick={() => handleOpenDetails(trainer)}
-                          className="text-gray-400 hover:text-white transition-colors"
+                          className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
                           title="View Details"
                         >
                           <Eye size={18} />
@@ -326,7 +326,7 @@ const TrainersPage = () => {
                               setTrainerToModify({ id: trainer.id, action: 'ACTIVATE' });
                               setIsConfirmModalOpen(true);
                             }}
-                            className="text-green-500/70 hover:text-green-500 transition-colors"
+                            className="text-emerald-500/70 hover:text-emerald-500 transition-colors"
                             title="Activate Trainer"
                           >
                             <UserCheck size={18} />
@@ -355,7 +355,7 @@ const TrainersPage = () => {
                 <StatusBadge status={selectedTrainer.isActive ? 'ACTIVE' : 'INACTIVE'} />
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-rose-500 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Trainer
                 </button>
@@ -363,38 +363,38 @@ const TrainersPage = () => {
               
               <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</label>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Full Name</label>
                   <p className="mt-1 text-white text-lg font-medium">{selectedTrainer.firstName} {selectedTrainer.lastName}</p>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Email Address</label>
-                  <p className="mt-1 text-gray-300">{selectedTrainer.email}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Email Address</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedTrainer.email}</p>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Phone Number</label>
-                  <p className="mt-1 text-gray-300">{selectedTrainer.phone || 'Not provided'}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Phone Number</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedTrainer.phone || 'Not provided'}</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Specialization</label>
-                    <p className="mt-1 text-gray-300">{selectedTrainer.specialization || '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Specialization</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedTrainer.specialization || '-'}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Experience</label>
-                    <p className="mt-1 text-gray-300">{selectedTrainer.experience != null ? `${selectedTrainer.experience} years` : '-'}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Experience</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedTrainer.experience != null ? `${selectedTrainer.experience} years` : '-'}</p>
                   </div>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Availability</label>
-                  <p className="mt-1 text-gray-300">{selectedTrainer.availability || '-'}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Availability</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedTrainer.availability || '-'}</p>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Bio</label>
-                  <p className="mt-1 text-gray-300">{selectedTrainer.bio || '-'}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Bio</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300">{selectedTrainer.bio || '-'}</p>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Added Date</label>
-                  <p className="mt-1 text-gray-300">{new Date(selectedTrainer.createdAt).toLocaleDateString()}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Added Date</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300">{new Date(selectedTrainer.createdAt).toLocaleDateString()}</p>
                 </div>
               </div>
 
@@ -414,7 +414,7 @@ const TrainersPage = () => {
                     setTrainerToModify({ id: selectedTrainer.id, action: 'ACTIVATE' });
                     setIsConfirmModalOpen(true);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-green-500/20 bg-green-500/10 text-green-500 rounded-md hover:bg-green-500/20 transition-colors font-medium text-sm"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-green-500/20 bg-green-500/10 text-emerald-500 rounded-md hover:bg-green-500/20 transition-colors font-medium text-sm"
                 >
                   <UserCheck size={18} /> Activate Trainer
                 </button>
@@ -430,7 +430,7 @@ const TrainersPage = () => {
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">First Name *</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">First Name *</label>
                   <input 
                     type="text" 
                     required
@@ -440,7 +440,7 @@ const TrainersPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Last Name *</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Last Name *</label>
                   <input 
                     type="text" 
                     required
@@ -452,7 +452,7 @@ const TrainersPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Email *</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Email *</label>
                 <input 
                   type="email" 
                   required
@@ -465,7 +465,7 @@ const TrainersPage = () => {
 
               {slideOverMode === 'ADD' && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Temporary Password</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Temporary Password</label>
                   <input 
                     type="password" 
                     value={form.password}
@@ -477,7 +477,7 @@ const TrainersPage = () => {
               )}
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Phone</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Phone</label>
                 <input 
                   type="text" 
                   value={form.phone}
@@ -488,7 +488,7 @@ const TrainersPage = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Specialization</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Specialization</label>
                   <input 
                     type="text" 
                     value={form.specialization}
@@ -498,7 +498,7 @@ const TrainersPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Experience (Years)</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Experience (Years)</label>
                   <input 
                     type="number" 
                     min="0"
@@ -510,7 +510,7 @@ const TrainersPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Availability Schedule</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Availability Schedule</label>
                 <input 
                   type="text" 
                   value={form.availability}
@@ -521,7 +521,7 @@ const TrainersPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Biography / Notes</label>
+                <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Biography / Notes</label>
                 <textarea 
                   rows={3}
                   value={form.bio}
@@ -541,7 +541,7 @@ const TrainersPage = () => {
                     }
                     setFormError(null);
                   }}
-                  className="flex-1 py-2 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2 px-4 border border-zinc-300 dark:border-zinc-700 rounded-md shadow-sm text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>

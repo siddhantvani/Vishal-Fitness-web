@@ -213,7 +213,7 @@ const AttendancePage = () => {
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search size={18} className="text-gray-500" />
+            <Search size={18} className="text-zinc-500 dark:text-zinc-400" />
           </div>
           <input
             type="text"
@@ -244,36 +244,36 @@ const AttendancePage = () => {
           <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-800">
             <thead className="bg-zinc-50 dark:bg-zinc-950/60">
               <tr>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Member</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Class</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Check In</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Check Out</th>
-                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
-                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Member</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Class</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Check In</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Check Out</th>
+                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Status</th>
+                <th scope="col" className="px-6 py-4 text-right text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-gray-900 divide-y divide-zinc-200 dark:divide-zinc-800">
+            <tbody className="bg-white dark:bg-zinc-900 divide-y divide-zinc-200 dark:divide-zinc-800">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex justify-center">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
                     </div>
-                    <p className="mt-4 text-gray-400 text-sm">Loading attendance records...</p>
+                    <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm">Loading attendance records...</p>
                   </td>
                 </tr>
               ) : error ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <p className="text-primary-500 text-sm">{error}</p>
-                    <button onClick={fetchData} className="mt-2 text-sm text-red-400 hover:text-red-300">Try again</button>
+                    <button onClick={fetchData} className="mt-2 text-sm text-rose-500 hover:text-red-300">Try again</button>
                   </td>
                 </tr>
               ) : attendanceData.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
-                    <ClipboardCheck size={40} className="mx-auto text-gray-600 mb-4" />
-                    <p className="text-gray-400 text-sm">No attendance records found matching your criteria.</p>
+                    <ClipboardCheck size={40} className="mx-auto text-zinc-400 dark:text-zinc-500 mb-4" />
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">No attendance records found matching your criteria.</p>
                   </td>
                 </tr>
               ) : (
@@ -288,26 +288,26 @@ const AttendancePage = () => {
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-zinc-900 dark:text-white">{a.member.firstName} {a.member.lastName}</div>
-                          <div className="text-sm text-gray-400">ID: {a.memberId.slice(0, 8)}...</div>
+                          <div className="text-sm text-zinc-500 dark:text-zinc-400">ID: {a.memberId.slice(0, 8)}...</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-300">{a.schedule.class.name}</div>
-                      <div className="text-xs text-gray-500">Sch: {a.scheduleId.slice(0, 8)}</div>
+                      <div className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{a.schedule.class.name}</div>
+                      <div className="text-xs text-zinc-500 dark:text-zinc-400">Sch: {a.scheduleId.slice(0, 8)}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-white">{new Date(a.checkInTime).toLocaleDateString()}</div>
-                      <div className="text-xs text-gray-500">{new Date(a.checkInTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                      <div className="text-xs text-zinc-500 dark:text-zinc-400">{new Date(a.checkInTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {a.checkOutTime ? (
                         <>
                           <div className="text-sm text-white">{new Date(a.checkOutTime).toLocaleDateString()}</div>
-                          <div className="text-xs text-gray-500">{new Date(a.checkOutTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                          <div className="text-xs text-zinc-500 dark:text-zinc-400">{new Date(a.checkOutTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                         </>
                       ) : (
-                        <span className="text-sm text-gray-500 italic">-</span>
+                        <span className="text-sm text-zinc-500 dark:text-zinc-400 italic">-</span>
                       )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -317,7 +317,7 @@ const AttendancePage = () => {
                       <div className="flex items-center justify-end gap-3">
                         <button 
                           onClick={() => handleOpenDetails(a)}
-                          className="text-gray-400 hover:text-white transition-colors"
+                          className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
                           title="View Details"
                         >
                           <Eye size={18} />
@@ -377,7 +377,7 @@ const AttendancePage = () => {
                 <StatusBadge status={selectedAttendance.status} />
                 <button 
                   onClick={() => setSlideOverMode('EDIT')}
-                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-red-400 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
+                  className="flex items-center gap-2 text-sm text-primary-500 hover:text-rose-500 font-medium bg-red-500/10 px-3 py-1.5 rounded-md transition-colors"
                 >
                   <Edit2 size={16} /> Edit Record
                 </button>
@@ -386,25 +386,25 @@ const AttendancePage = () => {
               <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Member</label>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Member</label>
                     <p className="mt-1 text-white text-lg font-medium">{selectedAttendance.member.firstName} {selectedAttendance.member.lastName}</p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Class</label>
-                    <p className="mt-1 text-gray-300 font-medium">{selectedAttendance.schedule.class.name}</p>
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Class</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300 font-medium">{selectedAttendance.schedule.class.name}</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Check In Time</label>
-                    <p className="mt-1 text-gray-300">
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Check In Time</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">
                       {new Date(selectedAttendance.checkInTime).toLocaleDateString()} {new Date(selectedAttendance.checkInTime).toLocaleTimeString()}
                     </p>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Check Out Time</label>
-                    <p className="mt-1 text-gray-300">
+                    <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Check Out Time</label>
+                    <p className="mt-1 text-zinc-700 dark:text-zinc-300">
                       {selectedAttendance.checkOutTime 
                         ? `${new Date(selectedAttendance.checkOutTime).toLocaleDateString()} ${new Date(selectedAttendance.checkOutTime).toLocaleTimeString()}` 
                         : '-'}
@@ -415,8 +415,8 @@ const AttendancePage = () => {
 
               {selectedAttendance.notes && (
                 <div className="bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg">
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">Notes</label>
-                  <p className="mt-1 text-gray-300 text-sm whitespace-pre-wrap">{selectedAttendance.notes}</p>
+                  <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Notes</label>
+                  <p className="mt-1 text-zinc-700 dark:text-zinc-300 text-sm whitespace-pre-wrap">{selectedAttendance.notes}</p>
                 </div>
               )}
             </div>
@@ -431,7 +431,7 @@ const AttendancePage = () => {
               <div className="space-y-4">
                 {slideOverMode === 'ADD' ? (
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-1">Select Booking *</label>
+                    <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Select Booking *</label>
                     <select 
                       required
                       value={form.bookingId}
@@ -446,20 +446,20 @@ const AttendancePage = () => {
                       ))}
                     </select>
                     {availableBookings.length === 0 && (
-                      <p className="text-xs text-red-400 mt-1">No active bookings available to record attendance for.</p>
+                      <p className="text-xs text-rose-500 mt-1">No active bookings available to record attendance for.</p>
                     )}
                   </div>
                 ) : (
                   <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 rounded-lg mb-4">
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-zinc-700 dark:text-zinc-300">
                       Editing record for: <span className="font-semibold text-white">{selectedAttendance?.member.firstName} {selectedAttendance?.member.lastName}</span>
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">Class: {selectedAttendance?.schedule.class.name}</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Class: {selectedAttendance?.schedule.class.name}</p>
                   </div>
                 )}
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Status *</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Status *</label>
                   <select 
                     value={form.status}
                     onChange={e => setForm({...form, status: e.target.value})}
@@ -473,7 +473,7 @@ const AttendancePage = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-1">Check In Time *</label>
+                    <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Check In Time *</label>
                     <input 
                       type="datetime-local" 
                       required
@@ -483,7 +483,7 @@ const AttendancePage = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-400 mb-1">Check Out Time</label>
+                    <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Check Out Time</label>
                     <input 
                       type="datetime-local" 
                       value={form.checkOutTime}
@@ -494,7 +494,7 @@ const AttendancePage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">Notes</label>
+                  <label className="block text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Notes</label>
                   <textarea 
                     rows={3}
                     value={form.notes}
@@ -515,7 +515,7 @@ const AttendancePage = () => {
                     }
                     setFormError(null);
                   }}
-                  className="flex-1 py-2.5 px-4 border border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
+                  className="flex-1 py-2.5 px-4 border border-zinc-300 dark:border-zinc-700 rounded-md shadow-sm text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500"
                 >
                   Cancel
                 </button>
