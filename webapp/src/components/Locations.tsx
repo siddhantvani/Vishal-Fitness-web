@@ -43,9 +43,14 @@ const Locations = () => {
               </div>
             </div>
             <div className="mt-10">
-              <button className="w-full py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl transition-colors border border-white/5 hover:border-white/20">
+              <a 
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Vishal Fitness Planet, Chhatrasal Bharat Nagar, Bhopal, Madhya Pradesh')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full block text-center py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl transition-colors border border-white/5 hover:border-white/20"
+              >
                 Get Directions
-              </button>
+              </a>
             </div>
           </div>
 
@@ -76,9 +81,14 @@ const Locations = () => {
               </div>
             </div>
             <div className="mt-10">
-              <button className="w-full py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl transition-colors border border-white/5 hover:border-white/20">
+              <a 
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Vishal Fitness Planet, Prakash Tarun Pushkar, Link Road, Bhopal, Madhya Pradesh')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full block text-center py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl transition-colors border border-white/5 hover:border-white/20"
+              >
                 Get Directions
-              </button>
+              </a>
             </div>
           </div>
         </div>
